@@ -1,0 +1,152 @@
+// Variables
+$font-stack: 'Arial, sans-serif';
+$primary-color: #2ecc71; // Zielony kolor
+$secondary-color: #333;  // Ciemny kolor
+$text-color: #fff;       // Kolor tekstu
+
+// Mixins
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+// Global styles
+body {
+  font-family: $font-stack;
+  margin: 0;
+  padding: 0;
+  background-color: $secondary-color;
+  color: $text-color;
+}
+
+section {
+  padding: 20px;
+  margin: 20px 0;
+  background-color: lighten($secondary-color, 5%);
+  border-radius: 10px;
+}
+
+h1, h2 {
+  color: $primary-color;
+}
+
+// Buttons
+.btn {
+  @include flex-center;
+  padding: 10px 20px;
+  margin-top: 10px;
+  background-color: $primary-color;
+  color: $text-color;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: darken($primary-color, 10%);
+  }
+}
+
+// Gallery
+.gallery {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+
+  img {
+    max-width: 30%;
+    height: auto;
+    margin: 10px;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+
+// Hamburger Menu
+.hamburger-menu {
+  position: relative;
+
+  .hamburger-icon {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: $secondary-color;
+    color: $text-color;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: lighten($secondary-color, 10%);
+    }
+  }
+
+  .side-menu {
+    position: fixed;
+    top: 0;
+    right: -250px; // Ukryj menu po prawej stronie
+    width: 250px;
+    height: 100%;
+    background-color: $secondary-color;
+    color: $text-color;
+    display: flex;
+    flex-direction: column;
+    padding-top: 60px;
+    transition: right 0.3s ease;
+    z-index: 999;
+
+    a {
+      color: $text-color;
+      text-decoration: none;
+      padding: 15px 25px;
+      text-align: center;
+      border-bottom: 1px solid lighten($secondary-color, 10%);
+      transition: background-color 0.3s ease;
+
+      &:hover {
+        background-color: lighten($secondary-color, 10%);
+      }
+    }
+
+    &.show {
+      right: 0; // Wyświetl menu
+    }
+  }
+}
+
+.editor {
+    margin: 20px;
+    textarea {
+      width: 100%;
+      height: 400px;
+    }
+  }
+  
+  .edit-icon {
+    color: #2ecc71;
+    cursor: pointer;
+    margin-left: 10px;
+    font-weight: bold;
+    display: inline; /* Ustawienie jako element liniowy */
+  }
+  
+  .edit-icon:hover {
+    color: #27ae60;
+  }
+  
+  .save-btn {
+    display: inline-block;
+    padding: 5px 10px;
+    margin-top: 10px;
+    background-color: #2ecc71;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
